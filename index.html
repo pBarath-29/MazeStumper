@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maze Stumper</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Maze Stumper</h1>
+  <p class="subtitle">Design a maze, then race four search algorithms through it side by side and see exactly where they diverge.</p>
+</header>
+
+<main>
+  <section class="panel" id="editor-panel">
+    <h2>1. Build your maze</h2>
+
+    <div class="toolbar">
+      <div class="tool-group" id="tool-group">
+        <button class="tool-btn active" data-tool="WALL">⬛ Wall</button>
+        <button class="tool-btn" data-tool="FLOOR">⬜ Floor (eraser)</button>
+        <button class="tool-btn" data-tool="START">🟢 Start</button>
+        <button class="tool-btn" data-tool="EXIT">🔴 Exit</button>
+        <button class="tool-btn" data-tool="MUD">🟫 Mud (costs more to cross)</button>
+      </div>
+
+      <div class="size-group">
+        <label for="size-slider">Grid size: <span id="size-label">15</span> x <span id="size-label-2">15</span></label>
+        <input type="range" id="size-slider" min="8" max="25" value="15">
+      </div>
+
+      <div class="action-group">
+        <button id="clear-btn">Clear maze</button>
+        <button id="border-btn">Fill border with walls</button>
+      </div>
+    </div>
+
+    <p class="hint">Click and drag across the grid to paint cells with the selected tool.</p>
+
+    <canvas id="maze-canvas" width="600" height="600"></canvas>
+
+    <div id="validation-banner" class="banner"></div>
+  </section>
+
+  <section class="panel" id="run-panel">
+    <h2>2. Run and compare</h2>
+
+    <!-- Compare mode UI -->
+    <div id="compare-ui" class="mode-ui">
+      <button id="compare-run-btn" class="run-btn">Run all algorithms</button>
+
+      <table id="compare-table" class="compare-table hidden">
+        <thead>
+          <tr><th>Algorithm</th><th>Nodes explored</th><th>Runtime (ms)</th><th>Path length</th><th>True cost</th><th>Crosses mud</th><th>Difficulty score</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <div id="compare-watch-group" class="hidden">
+        <label for="compare-watch-algo">Watch this search animate:</label>
+        <select id="compare-watch-algo"></select>
+
+        <div class="anim-controls hidden" id="compare-anim-controls">
+          <button id="compare-play-btn">Pause</button>
+          <button id="compare-skip-btn">Skip to end</button>
+          <label for="compare-speed">Speed</label>
+          <input type="range" id="compare-speed" min="1" max="10" value="5">
+          <span id="compare-progress" class="progress-label"></span>
+        </div>
+
+        <canvas id="compare-canvas" width="560" height="560"></canvas>
+      </div>
+    </div>
+
+    <p id="run-gate-msg" class="hint">Fix the issues above before running an algorithm.</p>
+  </section>
+</main>
+
+<footer>
+  <p class="legend">
+    <span class="swatch wall"></span> Wall
+    <span class="swatch floor"></span> Floor
+    <span class="swatch start"></span> Start
+    <span class="swatch exit"></span> Exit
+    <span class="swatch mud"></span> Mud (3x cost to cross)
+    <span class="swatch visited-early"></span> Explored early
+    <span class="swatch visited-late"></span> Explored late
+    <span class="swatch path"></span> Final path
+  </p>
+</footer>
+
+<script src="js/maze.js"></script>
+<script src="js/algorithms.js"></script>
+<script src="js/scoring.js"></script>
+<script src="js/renderer.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
