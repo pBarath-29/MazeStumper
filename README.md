@@ -14,6 +14,9 @@ It runs entirely in the browser (HTML, CSS and plain JavaScript with
 search and planning algorithms behave, since that is basically the
 algorithmic core of how a mobile robot finds its way around.
 
+* Try it live: https://mazestumper.netlify.app/
+* Demo video: https://youtu.be/iOHQ4SadUzo
+
 ```
 maze_web/
 ├── index.html
@@ -25,9 +28,6 @@ maze_web/
     ├── renderer.js     # canvas drawing and the replay/animation engine
     └── app.js          # UI wiring, the editor, and the comparison logic
 ```
-
-Run it with `python -m http.server` from `maze_web/` and open the URL it
-prints.
 
 ---
 
