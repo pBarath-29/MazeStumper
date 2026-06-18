@@ -107,17 +107,6 @@ toolGroup.addEventListener("click", (evt) => {
   state.tool = btn.dataset.tool;
 });
 
-// Size slider
-const sizeSlider = document.getElementById("size-slider");
-const sizeLabel = document.getElementById("size-label");
-const sizeLabel2 = document.getElementById("size-label-2");
-sizeSlider.addEventListener("input", () => {
-  const size = parseInt(sizeSlider.value, 10);
-  sizeLabel.textContent = size;
-  sizeLabel2.textContent = size;
-  resizeMaze(size, size);
-});
-
 function resizeMaze(rows, cols) {
   const old = state.maze.grid;
   const next = [];
